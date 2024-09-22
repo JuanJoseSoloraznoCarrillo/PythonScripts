@@ -1,4 +1,5 @@
-#!/usr/bin/env python3
+#! /home/juanjose/py/bin/python
+
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -78,12 +79,21 @@ class VoltageSignal(object):
 
 if __name__ == '__main__':
     import sys
+    def help():
+        print('[*] Correct usage:')
+        print('[?] python3 voltSignal.py [voltage] [duration] [rate<opt>] [noise<opt>]')
+        print('\t>>> python3 voltSignal.py 12.5 10.0 1000 0.01')
+
     if len(sys.argv) < 1:
         exit(1)
     else:
-        voltage = sys.argv[1]
-        noise = sys.argv[2]
-        duration = sys.argv[3]
-        rate = sys.argv[4]
-        print(VoltageSignal(voltage,duration,rate,noise))
-
+        try:
+            voltage = sys.argv[1]
+            noise = sys.argv[2]
+            duration = sys.argv[3]
+            rate = sys.argv[4]
+            print(voltage,noise,duration,rate)
+            sig = VoltageSignal(voltage,duration,rate,noise)
+            sig.plot()
+        except:
+            help()
