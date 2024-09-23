@@ -3,14 +3,36 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-class VoltageSignal(object):
+ 
 
-    def __init__(self,voltage,duration,rate=1000,noise=0.0):
+class VoltageSignal(object):
+    __slots__ = ['_time_line_',"_name", "_low", "_high", "_res", "_sets", "_volts", "_duration", "_rate", "_noise", "_data"]
+
+    def __init__(self, voltage, duration, rate=1000, noise=0.0):
         self._volts = float(voltage)
         self._duration = float(duration)
         self._rate = float(rate)
         self._noise = float(noise)
-        self._data = self._create_()
+        self._sets = {}  # This is used for fuzzy sets
+        self._data = self._create_()  # Assuming this is a method that generates some data
+
+    def __getattr__(self, name):
+        """Get the value of an attribute. Called after __getattribute__ is called with an AttributeError."""
+        if name in self._sets:
+            return self._sets[name]
+        else:
+            raise AttributeError(f"{name} is not a set or attribute")
+
+    def __setattr__(self, name, value):
+        """Define a set within a domain or assign a value to a domain attribute."""
+        # It's a domain attribute (listed in __slots__)
+        if name in self.__slots__:
+            object.__setattr__(self, name, value)
+        # Handle fuzzy sets
+        else:
+            assert str.isidentifier(name), f"{name} must be an identifier."
+            # Store fuzzy sets in _sets dictionary
+            self._sets[name] = value
 
     @property
     def Voltage(self):
