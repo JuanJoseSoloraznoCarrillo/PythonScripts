@@ -29,3 +29,4 @@ signal = VoltageSignal(5.0, 10.0)
 signal.noise = 0.2  # Sets noise using __setattr__
 signal.some_fuzzy_set = "Low"  # Adds fuzzy set to _sets
 print(signal)
+#testing file
