@@ -1,9 +1,15 @@
 #! /home/juanjose/py/bin/python
+#==================================================================================================#
+# Author: Solorzano, Juan Jose
+# Date: 2023-07-10
+# Description: This is a test file for the voltage signal class.
+#--------------------------------------------------------------------------------------------------#
+# How to use this file:
+# $ python3 signal_test.py 12.5 10.0 1000 0.01
+#==================================================================================================#
 
 import numpy as np
 import matplotlib.pyplot as plt
-
- 
 
 class VoltageSignal(object):
     __slots__ = ['_time_line_',"_name", "_low", "_high", "_res", "_sets", "_volts", "_duration", "_rate", "_noise", "_data"]
@@ -119,8 +125,3 @@ if __name__ == '__main__':
             sig.plot()
         except:
             help()
-#testing file
-#testing file
-#testing file
-#testing 2 file
-#testing 3 file

@@ -1,3 +1,9 @@
+#==================================================================================================
+# Athor: Juan Jose, Solorzano.
+# Date: 2023-07-10
+# Description: This is a test file for the voltage signal class.
+#==================================================================================================
+
 class VoltageSignal(object):
     __slots__ = ["_name", "_low", "_high", "_res", "_sets", "_volts", "_duration", "_rate", "_noise", "_data"]
 
